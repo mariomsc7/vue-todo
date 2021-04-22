@@ -57,7 +57,7 @@ body {
 
 .new-todo input:hover,
 .new-todo input:focus {
-    border-color: #000;
+    border-color: #41b883;
 }
 
 .new-todo button {
@@ -95,6 +95,27 @@ body {
     border-bottom: 1px solid #ddd;
 }
 
+.todo i {
+    cursor: pointer;
+    transition: color .4s;
+}
+
+.todo i:hover {
+    color: #41b883;
+}
+
 .todo:last-child {
     border-bottom: 0;
+}
+
+.todo .text {
+    cursor: pointer;
+}
+
+/* COMPLETED */
+
+/* A */
+
+.todo .text.completed {
+    text-decoration: line-through;
 }

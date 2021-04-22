@@ -30,7 +30,9 @@
 
                 <input type="text"
                        placeholder="Nuovo Todo"
-                       v-model="newTodo"
+                       v-model.trim="newTodo"
+                       @keyup.enter="addTodo"
+                       ref="todoInput"
                 />
 
                 <button @click="addTodo">aggiungi</button>
@@ -39,14 +41,22 @@
             
             <!-- CONTAINER TO DO -->
             <section class="todos-container">
-                <ul>
+                <ul v-if="todos.length > 0">
+                    <li class="todo" v-for="(todo, index) in todos">
 
-                    <li class="todo" v-for="todo in todos">
-                        <span class="text">{{todo.text}}</span>
-                        <i class="far fa-times-circle"></i>
+                        <span class="text"
+                              :class="{completed: todo.completed}"
+                              @click="updateStatus(index)"
+                        >
+                            {{todo.text}}
+                        </span>
+
+                        <i class="far fa-times-circle"
+                            @click="removeTodo(index)"    
+                        ></i>
                     </li>
-
                 </ul>
+                <h2 v-else>Non ci sono todos</h2>
             </section>
     </div>
 

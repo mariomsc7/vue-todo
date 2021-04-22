@@ -22,8 +22,40 @@ const app = new Vue({
         newTodo: '',
     },
     methods: {
+        /**
+         * Inserire una nuova to do nella lista
+         */
         addTodo() {
-            console.log('add');
+            console.log('Added new task');
+
+            if(this.newTodo !== '') {
+                this.todos.push({
+                    text: this.newTodo,
+                    completed: false,
+                });
+
+                this.newTodo = '';
+                this.$refs.todoInput.focus();
+            }
+        },
+
+         /**
+         * Inserire una nuova to do nella lista
+         * 
+         * @param {number} index posizione array di un oggetto todo
+         */
+
+        removeTodo(index) {
+            this.todos.splice(index, 1);
+        },
+
+        /**
+         * Update todo completed status
+         * 
+         * @param {number} index posizione array di un oggetto todo
+         */
+        updateStatus(index) {
+            this.todos[index].completed = ! this.todos[index].completed
         }
     }
 });
