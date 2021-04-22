@@ -27,22 +27,25 @@
 
             <!-- INPUT TEXT  -->
             <section class="new-todo">
+
                 <input type="text"
-                placeholder="Nuovo Todo">
-                <button>aggiungi</button>
+                       placeholder="Nuovo Todo"
+                       v-model="newTodo"
+                />
+
+                <button @click="addTodo">aggiungi</button>
+
             </section>
             
             <!-- CONTAINER TO DO -->
             <section class="todos-container">
                 <ul>
-                    <li class="todo">
-                        <span class="text">TEST TEST TEST</span>
+
+                    <li class="todo" v-for="todo in todos">
+                        <span class="text">{{todo.text}}</span>
                         <i class="far fa-times-circle"></i>
                     </li>
-                    <li class="todo">
-                        <span class="text">TEST TEST TEST</span>
-                        <i class="far fa-times-circle"></i>
-                    </li>
+
                 </ul>
             </section>
     </div>
